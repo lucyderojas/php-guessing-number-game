@@ -1,0 +1,70 @@
+<?php
+
+
+
+$play_count =0;
+$correct_guesses =0;
+$guess_high = 0;
+$guess_low =0;
+
+
+
+
+
+
+
+
+// ###############    WORK HERE: 
+function guessNumber() {
+  global $play_count, $correct_guesses, $guess_high, $guess_low,$guess;
+  
+  $play_count++;
+  $random_10 = rand(1,10);
+
+  if ($guess === $random_10) {
+    $correct_guesses++;
+  }
+  else {
+    if ($guess > $random_10) {
+      $guess_high++;
+    }
+    else {
+      $guess_low++;
+    }
+  };
+
+
+};
+// ###############    ENDS HERE:
+
+
+
+
+
+
+
+
+
+// 10 guessing rounds:
+$count = 1;
+for ($i = 0; $i <10; $i++) {
+  $guess = intval(readline("Round: ${count} of 10, enter a number: "));
+  guessNumber();
+  $count++;
+};
+
+
+
+
+
+
+
+
+
+$success_percentage = $correct_guesses*10;
+
+echo "correct guesses: ".$correct_guesses;
+echo "\nguess high: ".$guess_high;
+echo "\nguess low: ".$guess_low;
+echo "\nrounds played: ".$play_count;
+echo "\nsuccess percentage: ".$success_percentage."%\n";
